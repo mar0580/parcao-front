@@ -69,6 +69,6 @@ new Vue({
   created() {
     const vm = this;
 
-    vm.setLanguage('es');
+    vm.setLanguage('en');
   },
 })

@@ -10,7 +10,9 @@
       <!-- DataTable&TimeLine Starts -->
       <v-flex d-flex lg8 sm12 xs12>
         <data-table/>
-      </v-flex>      
+      </v-flex>
+	  
+      
 	  
     </v-layout>
   </v-container>

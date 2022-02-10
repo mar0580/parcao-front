@@ -92,7 +92,9 @@
       <v-stepper-content step="3">
         <h2> Aggreement </h2>
         <p style="padding-top: 25px;">
-            Depois que clicar no SUBMIT
+            Nostrud exercitation commodo consequat.Nostrud exercitation commodo consequat.Nostrud exercitation commodo consequat.Nostrud exercitation commodo consequat.
+            Nostrud exercitation commodo consequat.Nostrud exercitation commodo consequat.Nostrud exercitation commodo consequat.Nostrud exercitation commodo consequat.
+            Nostrud exercitation commodo consequat.Nostrud exercitation commodo consequat.Nostrud exercitation commodo consequat.Nostrud exercitation commodo consequat.
         </p>
         <v-checkbox label="I read agreement and i have not any objection."></v-checkbox>
 

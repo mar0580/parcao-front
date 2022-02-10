@@ -86,7 +86,7 @@ export default {
         },
         { divider: true, inset: true },
         {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
+          avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
           title: 'Birthday gift',
           isStarred: false,
           subtitle: "<span class='text--primary'>Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?",

@@ -1,7 +1,7 @@
 <template>
   <v-card
     class="mx-auto timeline"
-    max-width="280">
+    max-width="380">
     <v-card
       dark
       flat>

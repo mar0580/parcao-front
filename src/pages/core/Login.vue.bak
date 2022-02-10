@@ -54,7 +54,7 @@ export default {
   data() {
     return {
       loading: false,
-      userEmail: 'admin@adminMail.com',
+      userEmail: 'admin@yopmail.com',
       password: '123456',
       hidePassword: true,
       error: false,

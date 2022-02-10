@@ -48,7 +48,7 @@ new Vue({
   template: '<App/>',
   data: {
     themeColor: '#1D2939',
-    userEmail: 'admin@yopmail.com',
+    userEmail: 'admin@adminMail.com',
     userPassword: '123456'
   },
 
