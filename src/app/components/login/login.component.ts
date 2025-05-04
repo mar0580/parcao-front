@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { LoginRequestDTO } from '../../models/login-request';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { ValidationService } from '../../services/validation.service';
 
 @Component({
   selector: 'app-login',
@@ -23,34 +24,28 @@ export class LoginComponent {
   };
   errorMessage: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private validationService: ValidationService
+  ) {}
 
   onSubmit(): void {
-    const validationError = this.validateCredentials();
-    if (validationError) {
-      this.errorMessage = validationError;
+    this.errorMessage = '';
+
+    const emailError = this.validationService.validateEmail(this.credentials.userName);
+    if (emailError) {
+      this.errorMessage = emailError;
+      return;
+    }
+
+    const passwordError = this.validationService.validatePassword(this.credentials.password);
+    if (passwordError) {
+      this.errorMessage = passwordError;
       return;
     }
 
     this.authenticateUser();
-  }
-
-  private validateCredentials(): string | null {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailRegex.test(this.credentials.userName)) {
-      return 'Por favor, insira um e-mail válido.';
-    }
-
-    if (this.credentials.password.length < 6) {
-      return 'A senha deve ter pelo menos 6 caracteres.';
-    }
-
-    if (this.credentials.password.length > 8) {
-      return 'A senha deve ter no máximo 8 caracteres.';
-    }
-
-    return null;
   }
 
   private authenticateUser(): void {

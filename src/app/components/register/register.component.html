@@ -1,21 +1,62 @@
 <div class="register-container">
   <form class="register-form" (ngSubmit)="onSubmit()">
-    <h2>Register</h2>
+    <h2>Cadastro de Novo Usuário</h2>
+
+    <!-- Nome Completo -->
     <div class="form-group">
-      <label for="userName">Username</label>
+      <label for="nomeCompleto">Nome Completo</label>
+      <input type="text" id="nomeCompleto" [(ngModel)]="userData.nomeCompleto" name="nomeCompleto" required>
+    </div>
+
+    <!-- Username -->
+    <div class="form-group">
+      <label for="userName">Nome de Usuário</label>
       <input type="text" id="userName" [(ngModel)]="userData.userName" name="userName" required>
     </div>
+
+    <!-- Email -->
     <div class="form-group">
       <label for="email">Email</label>
       <input type="email" id="email" [(ngModel)]="userData.email" name="email" required>
     </div>
+
+    <!-- Password -->
     <div class="form-group">
-      <label for="password">Password</label>
+      <label for="password">Senha</label>
       <input type="password" id="password" [(ngModel)]="userData.password" name="password" required>
     </div>
-    <button type="submit">Register</button>
+
+    <!-- Filiais (Checkboxes) -->
+    <div class="form-group">
+      <label>Filiais</label>
+      <div class="checkbox-group">
+        <div *ngFor="let filial of filiaisDisponiveis" class="checkbox-item">
+          <input type="checkbox" [id]="'filial-' + filial"
+                 (change)="toggleFilial(filial)"
+                 [checked]="userData.filial.has(filial)">
+          <label [for]="'filial-' + filial">{{ filial }}</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Roles (Checkboxes) -->
+    <div class="form-group">
+      <label>Perfis de Acesso</label>
+      <div class="checkbox-group">
+        <div *ngFor="let role of rolesDisponiveis" class="checkbox-item">
+          <input type="checkbox" [id]="'role-' + role"
+                 (change)="toggleRole(role)"
+                 [checked]="userData.role.has(role)">
+          <label [for]="'role-' + role">{{ role }}</label>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit">Cadastrar</button>
+
     <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
     <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
-    <p class="login-link">Already have an account? <a routerLink="/auth/login">Login</a></p>
+
+    <p class="login-link">Já possui uma conta? <a routerLink="/auth/login">Faça login</a></p>
   </form>
 </div>

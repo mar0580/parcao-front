@@ -24,7 +24,14 @@ export class AuthService {
     );
   }
 
-  register(userData: SignupRequestDTO): Observable<any> {
+  register(userData: {
+    userName: string;
+    email: string;
+    password: string;
+    nomeCompleto: string;
+    filial: string[];
+    role: string[]
+  }): Observable<any> {
     return this.http.post(`${this.apiUrl}/signup`, userData);
   }
 
