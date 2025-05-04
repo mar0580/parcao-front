@@ -16,7 +16,10 @@ export class RegisterComponent {
   userData: SignupRequestDTO = {
     userName: '',
     email: '',
-    password: ''
+    password: '',
+    nomeCompleto: '',
+    filial: new Set<string>(),
+    role: new Set<string>()
   };
   errorMessage: string = '';
   successMessage: string = '';
