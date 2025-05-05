@@ -58,7 +58,8 @@ export class LoginComponent {
   private handleLoginSuccess(response: any): void {
     if (response.token) {
       localStorage.setItem('auth_token', response.token);
-      this.router.navigate(['/']);
+      //this.router.navigate(['/']);
+      this.router.navigate(['/dashboard']);
     } else {
       this.errorMessage = response.message || 'Falha no login.';
     }

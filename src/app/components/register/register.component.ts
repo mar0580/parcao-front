@@ -33,7 +33,12 @@ export class RegisterComponent {
     private authService: AuthService,
     private router: Router,
     private validationService: ValidationService
-  ) {}
+  ) {
+    // Verifica se o usuário tem permissão
+    if (!this.authService.isAdmin()) {
+      this.router.navigate(['/dashboard']);
+    }
+  }
 
   toggleFilial(filial: string): void {
     if (this.userData.filial.has(filial)) {

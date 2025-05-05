@@ -46,4 +46,14 @@ export class AuthService {
   getToken(): string | null {
     return localStorage.getItem('auth_token');
   }
+
+  isAdmin(): boolean {
+    const token = this.getToken();
+    if (!token) return false;
+
+    // Implemente sua lógica de verificação de admin
+    // Exemplo simples (adaptar conforme sua implementação real):
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload.roles && payload.roles.includes('ROLE_ADMIN');
+  }
 }

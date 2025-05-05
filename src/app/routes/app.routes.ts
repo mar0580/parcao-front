@@ -1,16 +1,29 @@
-import { Routes } from '@angular/router';
-import { AUTH_ROUTES } from './auth.routes';
-import { AuthGuard } from '../components/auth/auth.guard';
+import {Routes} from '@angular/router';
+import {AuthGuard} from '../components/auth/auth.guard';
+import {LayoutComponent} from '../core/layout/layout.component';
+import {AdminGuard} from '../core/guards/admin.guard';
 
 export const routes: Routes = [
   {
     path: 'auth',
-    children: AUTH_ROUTES
+    loadChildren: () => import('../routes/auth.routes').then(m => m.AUTH_ROUTES)
   },
   {
     path: '',
-    loadChildren: () => import('../routes/home.routes').then(m => m.HOME_ROUTES),
-    canActivate: [AuthGuard]
-  },
-  { path: '**', redirectTo: 'auth/login' }
+    component: LayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+      {
+        path: 'dashboard',
+        loadComponent: () => import('../features/dashboard/dashboard.component').then(m => m.DashboardComponent)
+      },
+      {
+        path: 'register',
+        loadComponent: () => import('../components/register/register.component').then(m => m.RegisterComponent),
+        canActivate: [AdminGuard] // Protege a rota apenas para admins
+      },
+      // Outras rotas protegidas
+    ]
+  }
 ];

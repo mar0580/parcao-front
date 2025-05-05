@@ -83,3 +83,17 @@ button[type="submit"]:hover {
   color: #2196F3;
   text-decoration: none;
 }
+
+.app-sidebar.collapsed .menu-divider {
+  display: none;
+}
+
+.app-sidebar.collapsed li a {
+  justify-content: center;
+  padding: 15px 0;
+}
+
+.app-sidebar.collapsed li a i {
+  margin-right: 0;
+  font-size: 1.5rem;
+}

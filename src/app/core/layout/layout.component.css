@@ -1,0 +1,20 @@
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+}
+
+.content-area {
+  flex: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+.content-area.sidebar-collapsed {
+  margin-left: 80px; /* Ajuste conforme a largura da sidebar recolhida */
+}
